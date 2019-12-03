@@ -58,6 +58,11 @@ const Container = () => {
   return (
     <div className={classes.root}>
       <div className={classes.appContainer}>
+        <div>
+          <Typography variant="h3" className={classes.title}>
+            Skale Contract Playground
+          </Typography>
+        </div>
         {!web3 ? (
           <>
             <div>

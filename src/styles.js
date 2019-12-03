@@ -13,8 +13,12 @@ const useStyles = makeStyles({
     top: 0,
     left: 0
   },
+  title: {
+    color: "white",
+    marginBottom: 55
+  },
   appContainer: {
-    marginTop: "15%",
+    marginTop: "8%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -44,6 +48,9 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#bb01b8"
     }
+  },
+  mainButtonContainer: {
+    marginTop: 28
   }
 });
 
