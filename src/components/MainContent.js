@@ -23,6 +23,8 @@ const MainContent = ({ web3 }) => {
       .then(r => {
         setContractInstance(new web3.eth.Contract(abi, r.contractAddress));
         setContractAddress(r.contractAddress);
+        setDappStatus(`Contract Address: ${r.contractAddress}`);
+        console.log(r);
       });
   };
 
