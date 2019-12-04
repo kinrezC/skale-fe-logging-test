@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Bitski } from "bitski";
 import Web3 from "web3";
-import { TerminalHttpProvider, SourceType } from "@terminal-packages/sdk";
+import { TerminalHttpProvider } from "@terminal-packages/sdk";
 import useStyles from "../styles";
 import { Typography, Button } from "@material-ui/core";
 import { abi, bytecode } from "../constants/abi";
