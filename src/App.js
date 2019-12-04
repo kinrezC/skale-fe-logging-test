@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/callback">
+        <Route path="/bitski">
           <BitskiGoto web3={bitskiWeb3} />
         </Route>
         <Route path="/metamask">

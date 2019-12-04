@@ -41,26 +41,19 @@ const Container = ({ setBitskiWeb3 }) => {
   };
 
   const setProvider = async () => {
-    console.log(bitski.authStatus);
-    if (bitski.authStatus === AuthenticationStatus.NotConnected) {
-      console.log("signing in");
-      await bitski.signIn();
-    } else {
-      console.log("callback");
-      Bitski.callback();
-      setBitskiWeb3(
-        new Web3(
-          new TerminalHttpProvider({
-            customHttpProvider: bitskiProvider,
-            source: "Bitski",
-            networkSource: "Skale",
-            apiKey: "rt92QzoCp2/KdqHjBgbccA==",
-            projectId: "geParyjQMPjpqXxO"
-          })
-        )
-      );
-      history.push("/bitski");
-    }
+    await bitski.signIn();
+    setBitskiWeb3(
+      new Web3(
+        new TerminalHttpProvider({
+          customHttpProvider: bitskiProvider,
+          source: "Bitski",
+          networkSource: "Skale",
+          apiKey: "rt92QzoCp2/KdqHjBgbccA==",
+          projectId: "geParyjQMPjpqXxO"
+        })
+      )
+    );
+    history.push("/bitski");
   };
 
   const unlockMetamask = async () => {

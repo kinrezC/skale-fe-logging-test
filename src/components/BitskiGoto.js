@@ -87,6 +87,10 @@ const BitskiGoto = () => {
       .then(setDappStatus("Withdrew Funds"));
   };
 
+  const makeCallback = () => {
+    Bitski.callback();
+  };
+
   const setBitski = async () => {
     setWeb3(
       new Web3(
@@ -108,6 +112,14 @@ const BitskiGoto = () => {
           <Typography variant="h3" className={classes.title}>
             Skale Contract Playground
           </Typography>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => makeCallback()}
+          >
+            Make Callback
+          </Button>
         </div>
         <div className={classes.mainButtonContainer}>
           <Button className={classes.unlockButton} onClick={() => setBitski()}>
