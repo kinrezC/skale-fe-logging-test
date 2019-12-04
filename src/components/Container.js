@@ -87,7 +87,7 @@ const Container = ({ setBitskiWeb3 }) => {
             >
               <Fade in={open}>
                 <Paper className={classes.modal}>
-                  <Typography variant="h4" style={{ marginTop: 50 }}>
+                  <Typography variant="h4" style={{ marginTop: 25 }}>
                     Select Wallet Provider
                   </Typography>
                   <div className={classes.modalButtonContainer}>
