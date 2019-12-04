@@ -67,9 +67,9 @@ const BitskiGoto = () => {
       .sendTransaction({
         from: account,
         to: contractAddress,
-        value: web3.utils.toWei(".2", "ether")
+        value: web3.utils.toWei(".0002", "ether")
       })
-      .then(setDappStatus("Sent .2 Ether"));
+      .then(setDappStatus("Requesting .0002 Ether"));
   };
 
   const getBalance = () => {

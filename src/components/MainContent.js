@@ -21,8 +21,13 @@ const MainContent = () => {
   }, []);
 
   const deployContract = () => {
+    const addr = window.ethereum ? window.ethereum.selectedAddress : "";
     web3.eth
-      .sendTransaction({ from: account, data: bytecode, gasLimit: 4000000 })
+      .sendTransaction({
+        from: addr,
+        data: bytecode,
+        gasLimit: 4000000
+      })
       .then(r => {
         setContractInstance(new web3.eth.Contract(abi, r.contractAddress));
         setContractAddress(r.contractAddress);
@@ -39,18 +44,20 @@ const MainContent = () => {
   };
 
   const sendTransaction = () => {
+    const addr = window.ethereum ? window.ethereum.selectedAddress : "";
     const max = Math.ceil(2000);
     const min = Math.floor(2);
     contractInstance.methods
       .setNumber(Math.round(Math.random() * max - min + min))
-      .send({ from: account })
+      .send({ from: addr })
       .then(setDappStatus("Successfully Called SetValue!"));
   };
 
   const sendFunds = () => {
+    const addr = window.ethereum ? window.ethereum.selectedAddress : "";
     web3.eth
       .sendTransaction({
-        from: account,
+        from: addr,
         to: contractAddress,
         value: web3.utils.toWei(".2", "ether")
       })
@@ -66,9 +73,10 @@ const MainContent = () => {
   };
 
   const withdrawFunds = () => {
+    const addr = window.ethereum ? window.ethereum.selectedAddress : "";
     contractInstance.methods
       .makeWithdrawal()
-      .send({ from: account })
+      .send({ from: addr })
       .then(setDappStatus("Withdrew Funds"));
   };
 
