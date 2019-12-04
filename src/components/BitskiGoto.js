@@ -8,7 +8,7 @@ import { abi, bytecode } from "../constants/abi";
 
 const bitski = new Bitski(
   "37a58180-64c6-46aa-9586-e5feba1d7a46",
-  "http://localhost:3000/callback"
+  "http://localhost:3000/bitski"
 );
 
 const skaleNetwork = {
