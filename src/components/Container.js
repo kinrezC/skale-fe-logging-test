@@ -34,6 +34,10 @@ const Container = () => {
     await bitski.signIn();
   };
 
+  const unlockMetamask = async () => {
+    await window.ethereum.enable();
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.appContainer}>
@@ -66,11 +70,20 @@ const Container = () => {
                   </Typography>
                   <div className={classes.modalButtonContainer}>
                     <div className={classes.modalButton}>
-                      <Link to="/metamask">
-                        <Button className={classes.unlockButton}>
-                          Metamask
+                      {window.ethereum.selectedAddress ? (
+                        <Link to="/metamask">
+                          <Button className={classes.unlockButton}>
+                            Metamask
+                          </Button>
+                        </Link>
+                      ) : (
+                        <Button
+                          className={classes.unlockButton}
+                          onClick={() => unlockMetamask()}
+                        >
+                          Unlock Metamask
                         </Button>
-                      </Link>
+                      )}
                     </div>
                     <div className={classes.modalButton}>
                       <Button
