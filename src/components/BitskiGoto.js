@@ -16,6 +16,8 @@ const skaleNetwork = {
   chainId: 1
 };
 
+const bitskiProvider = bitski.getProvider({ skaleNetwork });
+
 const BitskiGoto = () => {
   const classes = useStyles();
 
@@ -27,7 +29,9 @@ const BitskiGoto = () => {
 
   useEffect(() => {
     if (web3) {
-      web3.eth.getAccounts().then(r => setAccount(r[0]));
+      web3.eth.getAccounts().then(r => {
+        setAccount(r[0]);
+      });
     }
   }, [web3]);
 
@@ -83,12 +87,12 @@ const BitskiGoto = () => {
       .then(setDappStatus("Withdrew Funds"));
   };
 
-  const setBitski = () => {
+  const setBitski = async () => {
     setWeb3(
       new Web3(
         new TerminalHttpProvider({
-          customHttpProvider: bitski.getProvider({ skaleNetwork }),
-          source: SourceType.Bitski,
+          customHttpProvider: bitskiProvider,
+          source: "Bitski",
           networkSource: "Skale",
           apiKey: "rt92QzoCp2/KdqHjBgbccA==",
           projectId: "geParyjQMPjpqXxO"
@@ -98,9 +102,11 @@ const BitskiGoto = () => {
   };
   return (
     <>
-      <Button sclassName={classes.unlockButton} onClick={() => setBitski()}>
-        Connect to Web3
-      </Button>
+      <div className={classes.mainButtonContainer}>
+        <Button className={classes.unlockButton} onClick={() => setBitski()}>
+          Connect to Web3
+        </Button>
+      </div>
       <div className={classes.mainButtonContainer}>
         <Button
           className={classes.unlockButton}
