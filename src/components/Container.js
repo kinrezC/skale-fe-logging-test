@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bitski } from "bitski";
+import { Bitski, AuthenticationStatus } from "bitski";
 import {
   Backdrop,
   Button,
@@ -8,7 +8,9 @@ import {
   Fade,
   Typography
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Web3 from "web3";
+import { TerminalHttpProvider } from "@terminal-packages/sdk";
 
 import useStyles from "../styles";
 
@@ -17,8 +19,16 @@ const bitski = new Bitski(
   "http://localhost:3000/callback"
 );
 
-const Container = () => {
+const skaleNetwork = {
+  rpcUrl: "http://sip1.skalenodes.com:10046",
+  chainId: 1
+};
+
+const bitskiProvider = bitski.getProvider({ skaleNetwork });
+
+const Container = ({ setBitskiWeb3 }) => {
   const classes = useStyles();
+  const history = useHistory();
 
   const [open, setOpen] = useState(false);
 
@@ -31,7 +41,26 @@ const Container = () => {
   };
 
   const setProvider = async () => {
-    await bitski.signIn();
+    console.log(bitski.authStatus);
+    if (bitski.authStatus === AuthenticationStatus.NotConnected) {
+      console.log("signing in");
+      await bitski.signIn();
+    } else {
+      console.log("callback");
+      Bitski.callback();
+      setBitskiWeb3(
+        new Web3(
+          new TerminalHttpProvider({
+            customHttpProvider: bitskiProvider,
+            source: "Bitski",
+            networkSource: "Skale",
+            apiKey: "rt92QzoCp2/KdqHjBgbccA==",
+            projectId: "geParyjQMPjpqXxO"
+          })
+        )
+      );
+      history.push("/bitski");
+    }
   };
 
   const unlockMetamask = async () => {
