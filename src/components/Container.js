@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MainContent from "./MainContent";
+import BitskiGoto from "./BitskiGoto";
 import {
   Backdrop,
   Button,
@@ -31,7 +32,6 @@ const Container = () => {
 
   const [open, setOpen] = useState(false);
   const [web3, setWeb3] = useState(null);
-  const [bitskiWeb3, setBitskiWeb3] = useState(null);
 
   const handleOpen = () => {
     setOpen(true);
@@ -57,6 +57,7 @@ const Container = () => {
           })
         )
       );
+      console.log(web3);
     }
   };
 
@@ -120,19 +121,7 @@ const Container = () => {
           )}
           <Switch>
             <Route path="/callback">
-              <MainContent
-                web3={
-                  new Web3(
-                    new TerminalHttpProvider({
-                      customHttpProvider: bitski.getProvider({ skaleNetwork }),
-                      source: SourceType.Bitski,
-                      networkSource: "Skale",
-                      apiKey: "rt92QzoCp2/KdqHjBgbccA==",
-                      projectId: "geParyjQMPjpqXxO"
-                    })
-                  )
-                }
-              />
+              <BitskiGoto />
             </Route>
           </Switch>
         </div>
