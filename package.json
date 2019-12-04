@@ -1,5 +1,5 @@
 {
-  "name": "skale-dapp",
+  "name": "skale-logging-sample",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
