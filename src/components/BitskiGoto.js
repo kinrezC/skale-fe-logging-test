@@ -100,73 +100,81 @@ const BitskiGoto = () => {
       )
     );
   };
+
   return (
-    <>
-      <div className={classes.mainButtonContainer}>
-        <Button className={classes.unlockButton} onClick={() => setBitski()}>
-          Connect to Web3
-        </Button>
+    <div className={classes.root}>
+      <div className={classes.appContainer}>
+        <div>
+          <Typography variant="h3" className={classes.title}>
+            Skale Contract Playground
+          </Typography>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button className={classes.unlockButton} onClick={() => setBitski()}>
+            Connect to Web3
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => deployContract()}
+            disabled={!web3}
+          >
+            Deploy Contract to SKALE
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => readContract()}
+            disabled={!contractInstance}
+          >
+            Read Contract Storage
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => sendTransaction()}
+            disabled={!contractInstance}
+          >
+            Update Contract Storage
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => sendFunds()}
+            disabled={!contractInstance}
+          >
+            Send Test Ether To Contract
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => getBalance()}
+            disabled={!contractInstance}
+          >
+            Get Contract Balance
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Button
+            className={classes.unlockButton}
+            onClick={() => withdrawFunds()}
+            disabled={!contractInstance}
+          >
+            Withdraw Funds
+          </Button>
+        </div>
+        <div className={classes.mainButtonContainer}>
+          <Typography variant="h5" className={classes.title}>
+            {dappStatus}
+          </Typography>
+        </div>
       </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => deployContract()}
-          disabled={!web3}
-        >
-          Deploy Contract to SKALE
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => readContract()}
-          disabled={!contractInstance}
-        >
-          Read Contract Storage
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => sendTransaction()}
-          disabled={!contractInstance}
-        >
-          Update Contract Storage
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => sendFunds()}
-          disabled={!contractInstance}
-        >
-          Send Test Ether To Contract
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => getBalance()}
-          disabled={!contractInstance}
-        >
-          Get Contract Balance
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Button
-          className={classes.unlockButton}
-          onClick={() => withdrawFunds()}
-          disabled={!contractInstance}
-        >
-          Withdraw Funds
-        </Button>
-      </div>
-      <div className={classes.mainButtonContainer}>
-        <Typography variant="h5" className={classes.title}>
-          {dappStatus}
-        </Typography>
-      </div>
-    </>
+    </div>
   );
 };
 
