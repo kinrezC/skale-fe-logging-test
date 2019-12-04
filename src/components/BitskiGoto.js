@@ -5,6 +5,7 @@ import { TerminalHttpProvider } from "@terminal-packages/sdk";
 import useStyles from "../styles";
 import { Typography, Button } from "@material-ui/core";
 import { abi, bytecode } from "../constants/abi";
+import { apiKey, projectId } from "../constants/credentials";
 
 const bitski = new Bitski(
   "37a58180-64c6-46aa-9586-e5feba1d7a46",
@@ -98,8 +99,8 @@ const BitskiGoto = () => {
           customHttpProvider: bitskiProvider,
           source: "Bitski",
           networkSource: "Skale",
-          apiKey: "rt92QzoCp2/KdqHjBgbccA==",
-          projectId: "geParyjQMPjpqXxO"
+          apiKey: apiKey,
+          projectId: projectId
         })
       )
     );

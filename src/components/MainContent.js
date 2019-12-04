@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Typography } from "@material-ui/core";
 import Web3 from "web3";
 
@@ -9,16 +9,9 @@ const web3 = new Web3(window.terminal.ethereum || null);
 
 const MainContent = () => {
   const classes = useStyles();
-  const [account, setAccount] = useState(null);
   const [contractInstance, setContractInstance] = useState(null);
   const [contractAddress, setContractAddress] = useState(null);
   const [dappStatus, setDappStatus] = useState("");
-
-  useEffect(() => {
-    if (web3) {
-      web3.eth.getAccounts().then(r => setAccount(r[0]));
-    }
-  }, []);
 
   const deployContract = () => {
     const addr = window.ethereum ? window.ethereum.selectedAddress : "";
@@ -50,7 +43,7 @@ const MainContent = () => {
     contractInstance.methods
       .setNumber(Math.round(Math.random() * max - min + min))
       .send({ from: addr })
-      .then(setDappStatus("Successfully Called SetValue!"));
+      .then(setDappStatus("Requesting Signature"));
   };
 
   const sendFunds = () => {
@@ -59,9 +52,9 @@ const MainContent = () => {
       .sendTransaction({
         from: addr,
         to: contractAddress,
-        value: web3.utils.toWei(".2", "ether")
+        value: web3.utils.toWei(".0002", "ether")
       })
-      .then(setDappStatus("Sent .2 Ether"));
+      .then(setDappStatus("Requesting .0002 Ether"));
   };
 
   const getBalance = () => {
@@ -77,7 +70,7 @@ const MainContent = () => {
     contractInstance.methods
       .makeWithdrawal()
       .send({ from: addr })
-      .then(setDappStatus("Withdrew Funds"));
+      .then(setDappStatus("Requesting Funds Withdrawal Signature"));
   };
 
   return (

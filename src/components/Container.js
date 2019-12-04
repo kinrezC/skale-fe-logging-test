@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bitski, AuthenticationStatus } from "bitski";
+import { Bitski } from "bitski";
 import {
   Backdrop,
   Button,
