@@ -5,7 +5,7 @@ import Web3 from "web3";
 import useStyles from "../styles";
 import { bytecode, abi } from "../constants/abi";
 
-const web3 = new Web3(window.terminal.ethereum);
+const web3 = new Web3(window.terminal.ethereum || null);
 
 const MainContent = () => {
   const classes = useStyles();

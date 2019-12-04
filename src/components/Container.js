@@ -16,7 +16,7 @@ import useStyles from "../styles";
 
 const bitski = new Bitski(
   "37a58180-64c6-46aa-9586-e5feba1d7a46",
-  "http://localhost:3000/callback"
+  "http://localhost:3000/bitski"
 );
 
 const skaleNetwork = {
@@ -99,7 +99,7 @@ const Container = ({ setBitskiWeb3 }) => {
                   </Typography>
                   <div className={classes.modalButtonContainer}>
                     <div className={classes.modalButton}>
-                      {window.ethereum.selectedAddress ? (
+                      {window.ethereum && window.ethereum.selectedAddress ? (
                         <Link to="/metamask">
                           <Button className={classes.unlockButton}>
                             Metamask
