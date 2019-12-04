@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Typography } from "@material-ui/core";
+import Web3 from "web3";
 
 import useStyles from "../styles";
 import { bytecode, abi } from "../constants/abi";
 
-const MainContent = ({ web3 }) => {
+const web3 = new Web3(window.terminal.ethereum);
+
+const MainContent = () => {
   const classes = useStyles();
   const [account, setAccount] = useState(null);
   const [contractInstance, setContractInstance] = useState(null);
@@ -15,7 +18,7 @@ const MainContent = ({ web3 }) => {
     if (web3) {
       web3.eth.getAccounts().then(r => setAccount(r[0]));
     }
-  }, [web3]);
+  }, []);
 
   const deployContract = () => {
     web3.eth
