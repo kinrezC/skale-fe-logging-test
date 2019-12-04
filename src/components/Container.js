@@ -24,7 +24,7 @@ const skaleNetwork = {
   chainId: 1
 };
 
-const bitskiProvider = bitski.getProvider({ skaleNetwork });
+const bitskiProvider = bitski.getProvider({ network: skaleNetwork });
 
 const Container = ({ setBitskiWeb3 }) => {
   const classes = useStyles();
