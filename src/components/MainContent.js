@@ -52,9 +52,9 @@ const MainContent = () => {
       .sendTransaction({
         from: addr,
         to: contractAddress,
-        value: web3.utils.toWei(".0002", "ether")
+        value: web3.utils.toWei(".02", "ether")
       })
-      .then(setDappStatus("Requesting .0002 Ether"));
+      .then(setDappStatus("Requesting .02 Ether"));
   };
 
   const getBalance = () => {
